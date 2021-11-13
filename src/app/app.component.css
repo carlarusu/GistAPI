@@ -35,3 +35,9 @@ h1 {
 .alert {
     color: #ff4081;
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

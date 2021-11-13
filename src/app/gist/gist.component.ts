@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Gist } from '../gist';
 
 @Component({
   selector: 'app-gist',
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GistComponent implements OnInit {
 
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
+  @Input() gist: Gist = new Gist();
+  @Input() index: number = -1;
 
   constructor() { }
 

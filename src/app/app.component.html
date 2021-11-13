@@ -33,11 +33,13 @@
   </div>
 </div>
 
-<div *ngIf="error" class="container">
+<div *ngIf="gistsNb === 0" class="container">
   <mat-card>
     <mat-card-title class="alert">Alert</mat-card-title>
     <mat-divider inset></mat-divider>
-    <mat-card-content><h3>No gists were found for the user {{username}}</h3></mat-card-content>
+    <mat-card-content
+      ><h3>No gists were found for this user</h3></mat-card-content
+    >
   </mat-card>
 </div>
 
@@ -45,8 +47,12 @@
   <mat-card>
     <mat-card-title class="alert">Alert</mat-card-title>
     <mat-divider inset></mat-divider>
-    <mat-card-content><h3>User {{username}} was not found</h3></mat-card-content>
+    <mat-card-content><h3>User not found</h3></mat-card-content>
   </mat-card>
 </div>
 
-<app-gist></app-gist>
+<ul>
+  <li *ngFor="let gist of gists; index as i">
+    <app-gist [gist]="gist" [index]="i + 1"></app-gist>
+  </li>
+</ul>

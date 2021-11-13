@@ -5,3 +5,7 @@
     max-width: 50%;
     margin: 0 auto;
   }
+
+  .mat-divider {
+    border-top-color: #3f51b5;
+  }
