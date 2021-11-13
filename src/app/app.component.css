@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  max-width: 50%;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.mat-divider {
+  border-top-color: #3f51b5;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 10px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.searchbar {
+  flex-grow: 1;
+}
+
+.searchbutton {
+  margin-top: 5px;
+}
+
+.alert {
+    color: #ff4081;
+}
