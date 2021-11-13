@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { File } from './file';
+import { GistFile } from './gistFile';
 import { Gist } from './gist';
 import { GistApiService } from './gist-api.service';
 
@@ -42,14 +42,21 @@ export class AppComponent {
           if (entry.description != '') {
             gist.description = entry.description;
           }
-          console.log(entry.files);
-          
-          // for (let fileData of data.files) {
-          //   let file: File = new File();
-          //   file.filename = fileData.filename;
-          //   file.filetype = fileData.language;
-          //   file.raw_url = fileData.raw_url;
-          // }
+
+          var keys = Object.keys(entry.files);
+          for (let key of keys) {
+            // console.log(entry.files[key]);
+            let file: GistFile = new GistFile();
+            file.filename = entry.files[key].filename;
+            file.filetype = entry.files[key].language;
+            file.raw_url = entry.files[key].raw_url;
+
+            gist.files.push(file);
+
+            if (!gist.filetypes.includes(file.filetype)) {
+              gist.filetypes.push(file.filetype)
+            }
+          }
 
           this.gists.push(gist);
         }

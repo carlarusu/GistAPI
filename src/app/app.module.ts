@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatChipsModule} from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -33,6 +34,7 @@ import { GistComponent } from './gist/gist.component';
     MatToolbarModule,
     MatCardModule,
     MatDividerModule,
+    MatChipsModule,
     FormsModule,
     HttpClientModule
   ],
