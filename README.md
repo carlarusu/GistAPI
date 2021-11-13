@@ -1,27 +1,27 @@
 # GistAPI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
+## Details
 
-## Development server
+Use the API provided by Github Gist API, to create a basic single-page application with any **Web framework**. The goal of this application is to allow its users to enter a username and get the full list of public Gists for that user .
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Here's the list of full functionality required for the assignment: 
 
-## Code scaffolding
+- **Search**: When a user enters a username, they should be able to get a full list of public Gists by that user. 
+- **Filetypes**: Convert the filetypes of the files in the Gist into a tag/badge (For example, if the returned Gist has a list of files containing Python and Javascript files, the items listed should have the respective tags/badges). 
+- **Forks**: Additionally, include with the list of the Gists, the username/avatar of the last 3 users who have forked it. 
+- **Gist contents**: When clicking one of the Gists, display the content of the file
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Project specifications:
 
-## Build
+- Angular CLI: 13.0.2
+- Node: 16.13.0
+- Package Manager: npm 8.1.3
+- OS: win32 x64
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+The library AngularJS Material was used for designing the UI components.
 
-## Running unit tests
+## Running the application
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Run `npm install`.
+2. Run `ng serve`.
+3. Go to `http://localhost:4200/`.
