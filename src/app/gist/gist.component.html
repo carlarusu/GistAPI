@@ -2,25 +2,40 @@
   <mat-card>
     <mat-card-subtitle>Gist #{{ index }}</mat-card-subtitle>
     <mat-card-title>{{ gist.description }}</mat-card-title>
+    <mat-divider inset></mat-divider>
+
     <mat-card-content>
-      <mat-chip-list aria-label="Fish selection">
-        <mat-chip color="primary" *ngFor="let type of gist.filetypes">{{type}}</mat-chip>
+      <p style="margin-top: 10px" class="section top-spacer">Tags:</p>
+      <mat-chip-list>
+        <div *ngFor="let type of gist.filetypes">
+            <mat-chip color="primary" *ngIf="type">{{ type }}</mat-chip>
+        </div>
       </mat-chip-list>
 
+      <p class="section top-spacer">Files:</p>
       <ul>
         <li *ngFor="let file of gist.files; index as i">
-          <a mat-button href="{{ file.raw_url }}" target="_blank">{{
-            file.filename
-          }}</a>
+          <a mat-button href="{{ file.raw_url }}" target="_blank">{{ file.filename }}</a>
         </li>
       </ul>
     </mat-card-content>
-    <mat-divider inset></mat-divider>
-    <!-- <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions> -->
-    <!-- <mat-card-footer>
-    </mat-card-footer> -->
+
+    <mat-card-actions>
+      <p class="section left-spacer">Forks:</p>
+      <div class="fork">
+        <li *ngFor="let fork of gist.forks | slice: gist.forks.length - 3">
+          <a class="user" mat-button href="{{ fork.url }}" target="_blank"
+            ><img
+              src="{{ fork.avatar }}"
+              alt="smth"
+              mat-card-avatar
+              class="avatar"
+            />
+            <p>{{ fork.username }}</p></a
+          >
+        </li>
+      </div>
+    </mat-card-actions>
+
   </mat-card>
 </div>

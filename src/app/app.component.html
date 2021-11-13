@@ -1,6 +1,5 @@
 <div class="container">
   <h1>Github Gist Tool</h1>
-
   <mat-divider></mat-divider>
 
   <div class="search">
@@ -21,6 +20,7 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
+
     <button
       [disabled]="username === ''"
       class="searchbutton"
@@ -30,6 +30,7 @@
     >
       <mat-icon>search</mat-icon>
     </button>
+
   </div>
 </div>
 
@@ -37,9 +38,7 @@
   <mat-card>
     <mat-card-title class="alert">Alert</mat-card-title>
     <mat-divider inset></mat-divider>
-    <mat-card-content
-      ><h3>No gists were found for this user</h3></mat-card-content
-    >
+    <mat-card-content><h3>No gists were found for this user</h3></mat-card-content>
   </mat-card>
 </div>
 

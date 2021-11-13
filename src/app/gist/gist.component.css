@@ -11,5 +11,27 @@
 }
 
 .mat-card-title {
-    font-size:large;
+  font-size: large;
+}
+
+.fork {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.avatar {
+  margin-top: 5px;
+}
+
+.section {
+    font-weight: bold;
+}
+
+.left-spacer {
+    margin-left: 10px;
+}
+
+.top-spacer {
+    margin-top: 10px;
 }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Gist } from '../gist';
+import { Gist } from '../model/gist';
 
 @Component({
   selector: 'app-gist',

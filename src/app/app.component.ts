@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { GistFile } from './gistFile';
-import { Gist } from './gist';
+import { GistFile } from './model/gistFile';
+import { Gist } from './model/gist';
 import { GistApiService } from './gist-api.service';
+import { Fork } from './model/fork';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,6 @@ export class AppComponent {
   gists: Gist[] = [];
 
   constructor(private gistService: GistApiService) {
-
   }
 
   onClear() {
@@ -26,26 +26,32 @@ export class AppComponent {
   }
 
   onSearch() {
+    // reset results
     this.gists = [];
     this.gistsNb = -1;
     this.error= false;
 
+    // get gists
     this.gistService.getUserGists(this.username)
     .subscribe(
       data => {
-        console.log('success', data);
+        console.log(data);
+        
         this.gistsNb = data.length;
 
         for (let entry of data) {
+          // create new gist
           let gist: Gist = new Gist();
+
+          // get id and description
           gist.id = entry.id;
-          if (entry.description != '') {
+          if (entry.description) {
             gist.description = entry.description;
           }
 
+          // get file info
           var keys = Object.keys(entry.files);
           for (let key of keys) {
-            // console.log(entry.files[key]);
             let file: GistFile = new GistFile();
             file.filename = entry.files[key].filename;
             file.filetype = entry.files[key].language;
@@ -58,17 +64,42 @@ export class AppComponent {
             }
           }
 
+          // get forks
+          gist.forks = this.getForks(gist.id);
+          
           this.gists.push(gist);
         }
         
       },
       (error) => {
-        console.log('oops', error)
+        this.error = true
+      }
+    );
+  }
+
+  getForks(gistId: string):Fork[] {
+    let forks: Fork[] = [];
+
+    this.gistService.getGistForks(gistId)
+    .subscribe(
+      data => {
+        // parse forks
+        for (let entry of data) {
+          let fork: Fork = new Fork();
+          fork.username = entry.owner.login;
+          fork.avatar = entry.owner.avatar_url;
+          fork.url = entry.git_pull_url;
+          fork.createdAt = entry.created_at;
+
+          forks.push(fork);
+        }
+        
+      },
+      (error) => {
         this.error = true
       }
     );
 
-    console.log(this.gists);
-    
+    return forks;
   }
 }
